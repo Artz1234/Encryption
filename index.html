@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Encryption Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <script>
+    function decryptText() {
+        //Get the encrypted data from the HTML
+        const encryptedData = document.getElementById('encryptedText').innerText;
+        //Get the key from the user input
+         const key = document.getElementById('decryptionKey').value;
+        //Perform decryption using Crypto-JS
+         try {
+            const bytes  = CryptoJS.AES.decrypt(encryptedData, key);
+            const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+            const strArray = decryptedText.split('|');
+        //Display the decrypted text
+            document.getElementById('decryptedResultt').innerText = strArray[0];
+            document.getElementById('decryptedResultb').innerText = strArray[1];
+            document.getElementById('decryptedResults').innerText = strArray[2];
+            console.log("try");
+            console.log(encryptedData); 
+            console.log(decryptedText);
+            console.log(strArray);
+        } catch (e) {
+        //Handle errors (e.g., incorrect key)
+            document.getElementById('decryptedResult').innerText = "Error: Invalid key or corrupted data.";
+            console.error("Decryption failed:", e);
+        }
+    }
+    </script>
+</head>
+<body>
+    <p id="encryptedText" style="display:none;">U2FsdGVkX1/1vgURNeseCdHp4Bn9eIfoLxJS0BogxNw7Sc+5CWM0cCxA1z0QgpuqJP7vjdS409rRsCRkLPlvbhgP52z0LaDfhatH8rkcdYa8FLMiIraJ+1bbYHWqo8FMgLEtRn99YsakXy5Z4iZxQx9yfQOt2tcfLae/qnhdZPendNDcOt04T/DD4M5cReZpvfSQa1xDOsthwcSx/jdFACxr0wXXSLj8Je13st99ZjjfYg/mt+52MOb82S9RsIkVvra6wPiM9J1zSkTbHviQfjrDEDf9g/zjzWJfwjO3NQskUDFHtsBaj0Y8JnVDe+1FKGtVVmjePt7GjhoESSWwXrimHXXVG/H4/3vvZg3smcmEzf5xbbcHDy0cgXKN9zKWe3jlE1JlLVsJbK2USmxC7wZqebLrNBNU8KrBNRVtd4CUoyiL+ZH5v5tL9Kh3k7+NAxwBYHv8+DJkiNzLTpc5KvIgk9IfT+rAxlLvcYc8hxk=</p>
+    <label for="decryptionKey">Enter Key:</label>
+    <input type="text" id="decryptionKey">
+    <button onclick="decryptText()">Decrypt</button>
+    <br>
+    <br>
+    <center style="width: 60vw;margin: 0 auto;border: 5px solid black;border-radius:5px;">
+        <h1 id="decryptedResultt"></h1>
+        <div id="decryptedResultb"></div>
+        <br>
+        <div id="decryptedResults"></div>
+        <br>
+    </center>
+</body>
+</html>

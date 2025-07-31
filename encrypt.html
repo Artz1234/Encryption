@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client-Side Encryption</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        label, input, button, textarea { display: block; width: 100%; margin-bottom: 10px; }
+        textarea { height: 100px; }
+        pre { background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; word-wrap: break-word; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+
+    <h1>Client-Side Encryption</h1>
+    <p>This script encrypts your message in the browser using AES.</p>
+
+    <div>
+        <label for="plainText">Message to Encrypt:</label>
+        <textarea id="plainText" placeholder="Enter your message here..."></textarea>
+    </div>
+
+    <div>
+        <label for="encryptionKey">Encryption Key:</label>
+        <input type="text" id="encryptionKey" placeholder="Enter a strong key...">
+    </div>
+    
+    <button onclick="encryptMessage()">Encrypt Message</button>
+
+    <h2>Encrypted Message</h2>
+    <p>Copy this encrypted text to use for decryption later.</p>
+    <pre id="encryptedOutput"></pre>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
